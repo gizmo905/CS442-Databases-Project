@@ -31,10 +31,12 @@ frontend/
   login.js(uneccessary)
   
 sql/
+  
   schema.sql # contains CREATE TABLE statements
+  
   seed_data.sql # inserts sample users, students, advisors, sections, etc.
   
-When you upload your current files to GitHub, ensure **folder names remain the same** so setup instructions work as-is.
+ensure **folder names remain the same** so setup instructions work as-is.
 
 ---
 
