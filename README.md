@@ -9,17 +9,26 @@ This README explains exactly how any new user can clone the repository and run t
 #  1. Repository Contents:
 
 backend/
+  
   app.py
+  
   db_config_example.py # template for database configuration
 
 frontend/
+  
   LoginPage.html
+  
   StudentDashBoard.html
+  
   advisor-dashboard.html
+  
   login.css
+  
   StudentDashBoard.css
+  
   advisor-dashboard.css
 
+  
 sql/
   schema.sql # contains CREATE TABLE statements
   seed_data.sql # inserts sample users, students, advisors, sections, etc.
