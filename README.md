@@ -14,7 +14,7 @@ backend/
   
   db_config_example.py # template for database configuration
 
-frontend/
+newFrontEnd/
   
   LoginPage.html
   
@@ -34,7 +34,7 @@ sql/
   
   schema.sql # contains CREATE TABLE statements
   
-  seed_data.sql # inserts sample users, students, advisors, sections, etc.
+  sample_data.sql # inserts sample users, students, advisors, sections, etc.
   
 ensure **folder names remain the same** so setup instructions work as-is.
 
@@ -74,14 +74,14 @@ iii.)Run the schema:
         mysql -u root -p college_db < sql/schema.sql
 
 iv.)Run the seed data:
-        mysql -u root -p college_db < sql/seed_data.sql
+        mysql -u root -p college_db < sql/sample_data.sql
 
 ## Step 3 — Configure the Backend Connection
 
 Inside backend/, create your personal db_config.py:
 
     cd backend
-    cp db_config_example.py db_config.py
+    cp db_config_example.py 
 
 Open db_config.py and update:
     conn = mysql.connector.connect(
@@ -116,7 +116,7 @@ If successful, Flask will run at:
 
 ## Step 6 — Start the Frontend
 
-Inside frontend/:
+Inside newFrontend/:
     
     python -m http.server 8000
 
