@@ -1,0 +1,286 @@
+* {
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #f5f6fa;
+}
+
+/* Navbar */
+.top-nav {
+  background: #1e293b;
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.brand {
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+/* User + Logout button container */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.user {
+  font-size: 0.85rem;
+  opacity: 0.9;
+}
+
+/* Logout button */
+.btn-logout {
+  background: rgba(239, 68, 68, 0.09);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  color: #f87171;
+  border-radius: 999px;
+  font-weight: 600;
+  padding: 0.4rem 0.9rem;
+  cursor: pointer;
+  font-size: 0.75rem;
+  transition: background 0.15s ease;
+}
+
+.btn-logout:hover {
+  background: rgba(239, 68, 68, 0.18);
+}
+
+/* Page container */
+.page {
+  max-width: 1100px;
+  margin: 1.5rem auto 3.5rem;
+  padding: 0 1rem;
+}
+
+/* Card */
+.card {
+  background: #fff;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 4px rgba(15, 23, 42, 0.08);
+  margin-bottom: 1.5rem;
+  padding: 1.25rem 1.5rem;
+}
+
+.card h2 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  font-size: 1.05rem;
+  color: #0f172a;
+}
+
+/* Info grid */
+.info-grid isplay: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 1rem;
+}
+
+.info-item label {
+  display: block;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  color: #6b7280;
+  margin-bottom: 0.25rem;
+  letter-spacing: 0.08em;
+}
+
+.info-item span {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #111827;
+}
+
+/* Placeholder text for profile values */
+.placeholder-text {
+  color: #9ca3af;
+  font-style: italic;
+}
+
+/* Search bar */
+.search-row {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.search-row input {
+  flex: 1 1 250px;
+  padding: 0.5rem 0.65rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.35rem;
+  font-size: 0.85rem;
+}
+
+.search-row button {
+  background: #1e293b;
+  color: #fff;
+  border: none;
+  padding: 0.55rem 1.1rem;
+  border-radius: 0.35rem;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+.search-row button:hover {
+  background: #0f172a;
+}
+
+/* Placeholder area */
+.placeholder {
+  text-align: center;
+  padding: 2.5rem 1rem;
+  color: #6b7280;
+  background: #f9fafb;
+  border: 1px dashed #d1d5db;
+  border-radius: 0.5rem;
+}
+
+/* Tiny text */
+.tiny-text {
+  font-size: 0.65rem;
+  color: #6b7280;
+  margin-top: 0.5rem;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .top-nav {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  .nav-right {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+}
+
+/* ========================= */
+/*     CRUD / TABLE STYLES   */
+/* ========================= */
+
+.results-wrapper {
+  margin-top: 0.75rem;
+}
+
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: 0.5rem;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+thead {
+  background: #e5e7eb;
+}
+
+th,
+td {
+  padding: 0.5rem 0.7rem;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+  white-space: nowrap;
+}
+
+tbody tr:nth-child(even) {
+  background: #f3f4f6;
+}
+
+tbody tr:hover {
+  background: #e5f0ff;
+}
+
+/* Generic small buttons */
+.btn,
+.btn-sm {
+  border: none;
+  cursor: pointer;
+  border-radius: 0.35rem;
+  font-size: 0.75rem;
+  padding: 0.3rem 0.6rem;
+}
+
+.btn-primary {
+  background: #1e293b;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: #0f172a;
+}
+
+.btn-outline {
+  background: #fff;
+  border: 1px solid #d1d5db;
+  color: #111827;
+}
+
+.btn-outline:hover {
+  background: #f3f4f6;
+}
+
+.btn-danger {
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.5);
+  color: #b91c1c;
+}
+
+.btn-danger:hover {
+  background: rgba(239, 68, 68, 0.22);
+}
+
+/* Actions cell */
+.table-actions {
+  display: flex;
+  gap: 0.3rem;
+}
+
+/* Add enrollment form */
+.enroll-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+
+.enroll-form input,
+.enroll-form select {
+  padding: 0.45rem 0.55rem;
+  border-radius: 0.35rem;
+  border: 1px solid #d1d5db;
+  font-size: 0.8rem;
+}
+
+.enroll-form label {
+  display: block;
+  font-size: 0.7rem;
+  color: #6b7280;
+  margin-bottom: 0.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.enroll-form .form-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.enroll-form .form-actions {
+  display: flex;
+  align-items: flex-end;
+}

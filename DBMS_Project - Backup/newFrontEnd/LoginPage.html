@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>University Portal Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="login.css" />
+</head>
+<body>
+  <div class="login-container">
+    <div class="login-card">
+      <h1>University Portal</h1>
+      <p class="subtitle">Sign in to continue</p>
+
+      <form id="loginForm">
+        <label for="email">University Email</label>
+        <input type="email" id="email" name="email" placeholder="name@university.edu" required />
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Enter password" required />
+
+        <!-- This select is optional for now.
+             In real login you usually DON'T let user pick their role,
+             the backend tells you. But we keep it for testing. -->
+        <label for="role">Login as</label>
+        <select id="role" name="role">
+          <option value="student">Student</option>
+          <option value="advisor">Advisor</option>
+        </select>
+
+        <button type="submit">Sign In</button>
+      </form>
+
+      <p id="errorMsg" class="error-msg" style="display:none;"></p>
+    </div>
+  </div>
+
+<script>
+  const API_BASE = "http://127.0.0.1:5000";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    // Use your actual form ID: loginForm
+    const form = document.getElementById("loginForm");
+    const errorBox = document.getElementById("errorMsg");
+
+    if (!form) {
+      console.error("Login form not found!");
+      return;
+    }
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const emailInput = document.getElementById("email");
+      const passInput = document.getElementById("password");
+      const roleSelect = document.getElementById("role"); // optional dropdown if exists
+
+      const email = emailInput.value.trim();
+      const password = passInput.value.trim();
+      const role = roleSelect ? roleSelect.value : null;
+
+      if (!email || !password) {
+        alert("Please enter both email and password.");
+        return;
+      }
+
+      const payload = { email, password };
+      if (role) payload.role = role;
+
+      fetch(`${API_BASE}/api/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      })
+        .then((res) => {
+          if (!res.ok) {
+            return res.json().then((err) => {
+              throw new Error(err.message || "Login failed");
+            });
+          }
+          return res.json();
+        })
+        .then((data) => {
+          console.log("Login response:", data);
+
+          // Normalize role so "Student"/"Advisor" → "student"/"advisor"
+          const normalizedRole = (data.role || "").toLowerCase();
+
+          // Save who is logged in
+          localStorage.setItem(
+            "dbms_user",
+            JSON.stringify({
+              user_id: data.user_id,
+              email: data.email,
+              role: normalizedRole,
+              fname: data.fname,
+              lname: data.lname,
+            })
+          );
+
+          if (errorBox) {
+            errorBox.style.display = "none";
+            errorBox.textContent = "";
+          }
+
+          if (normalizedRole === "student") {
+            // matches your file: StudentDashBoard.html
+            window.location.href = "StudentDashBoard.html";
+          } else if (normalizedRole === "advisor") {
+            //  FIXED: match actual filename advisor-dashboard.html
+            window.location.href = "advisor-dashboard.html";
+          } else {
+            alert("Unknown role returned from server: " + data.role);
+          }
+        })
+        .catch((err) => {
+          console.error("Login Error:", err);
+          if (errorBox) {
+            errorBox.textContent =
+              err.message || "Could not log in. Please try again.";
+            errorBox.style.display = "block";
+          } else {
+            alert(err.message || "Could not log in. Please try again.");
+          }
+        });
+    });
+  });
+</script>
+
+  </body>
+</html>
