@@ -28,6 +28,7 @@ frontend/
   
   advisor-dashboard.css
 
+  login.js(uneccessary)
   
 sql/
   schema.sql # contains CREATE TABLE statements
